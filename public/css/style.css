@@ -1,0 +1,51 @@
+
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "Noto Sans JP";
+    box-sizing: border-box;
+    font-weight: normal;
+}
+  
+
+#top-title{
+    font-weight:bold;
+}
+
+
+.select-box{
+    border:solid 1px #C0C0C0;
+    vertical-align: middle;
+}
+
+/* .result-table > ul > .image{
+    display:none;
+} */
+
+/* .result-table > ul > .active{
+    display:block;
+} */
+
+
+.slider{
+    margin: auto;
+    width: 80%;
+}
+.slider img{
+    height: auto;
+    width: 100%;
+}
+/*slick setting*/
+.slick-prev:before,
+.slick-next:before {
+    color: #000;
+}
+
+
+
+
+.result-table{
+    border-top:solid 1px #000;
+    
+}
