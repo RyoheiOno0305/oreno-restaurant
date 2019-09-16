@@ -87,6 +87,7 @@ class ResultsController extends Controller
         
         $json = $response->getBody()->getContents();
         $results = json_decode($json, true);
+        
         return view('gnavi.result')->with('results', $results);
         
 

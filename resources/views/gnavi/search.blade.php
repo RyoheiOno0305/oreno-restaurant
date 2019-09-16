@@ -1,25 +1,30 @@
 <!DOCTYPE html>
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-
-    <title>俺のグルメナビ</title>
-
+    <!-- bootstrapの読み込み -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!-- タイトル -->
+    <title>俺のグルメナビ</title>
 </head>
 <body>
-    <div class="">
-        <div id="top-title" class="col-xs-offset-1">
-            <h1>俺のグルメナビ</h1>
-        </div>
-        <div class="col-xs-offset-2">
-            <form method="post" action="{{url('results')}}">
+    <nav class="navbar navbar-default">
+        <h2 class="title">俺のグルメナビ</h2>
+    </nav>
+    <div class="col-md-offset-1">
+        <div class="col-md-offset-2">
+            <form class="col-md-offset-1 " method="post" action="{{url('results')}}">
                     {{csrf_field()}}
                     @csrf
-                    <h3>今どこ？</h3>：
+                    <br>
+                    <br>
+                    <p>今どこ？：
+                    <!-- 場所は駅で指定　例 新宿＝新宿駅 -->
                         <select name="place" class="select-box">
                             <option value="新宿駅">新宿</option>
                             <option value="東京駅">東京</option>
@@ -29,8 +34,8 @@
                             <option value="秋葉原駅">秋葉原</option>
                             <option value="有楽町駅">有楽町</option>
                         </select>
-                    <br>
-                    <h3>何食べる？</h3>：
+                    　　　　
+                       何食べる？：
                         <select name="name" class="select-box">
                             <option value="ステーキ">ステーキ</option>
                             <option value="パスタ">パスタ</option>
@@ -48,17 +53,24 @@
                             <option value="焼肉">焼肉</option>
                             <option value="ジンギスカン">ジンギスカン</option>
                         </select>
+                    </p>
+                    <br>
+                    
+                     フリーワード検索：<input class="freeword" type="text">
                     <br>
                     <br>
                     条件：<br>
-                    <input class="lunch" name="lunch" type="checkbox" value=>ランチ営業あり<br>
-                    <input class="no_smoking" name="no_smoking" type="checkbox" value=>禁煙席あり<br>
-                    <input class="bottomless_cup" name="bottomless_cup" type="checkbox" value=>飲み放題あり<br>
-                    <input class="private_room" name="private_room" type="checkbox" value=>個室あり<br>
-                    <input class="e_money" name="e_money" type="checkbox" value=>電子マネー利用可<br>
-                    <input class="breakfast" name="breakfast" type="checkbox" value=>モーニングあり<br>
-                    <input class="wifi" name="wifi" type="checkbox" value=>wifiあり<br>
-
+                    <div class="condition-box col-md-offset-1">
+                        <ul>
+                            <li class="condition"><input class="lunch" name="lunch" type="checkbox" value=>ランチ営業あり</li>
+                            <li class="condition"><input class="no_smoking condition" name="no_smoking" type="checkbox" value=>禁煙席あり</li>
+                            <li class="condition"><input class="bottomless_cup condition" name="bottomless_cup" type="checkbox" value=>飲み放題あり</li>
+                            <li class="condition"><input class="private_room condition" name="private_room" type="checkbox" value=>個室あり</li>
+                            <li class="condition"><input class="e_money condition" name="e_money" type="checkbox" value=>電子マネー利用可</li>
+                            <li class="condition"><input class="breakfast condition" name="breakfast" type="checkbox" value=>モーニングあり</li>
+                            <li class="condition"><input class="wifi condition" name="wifi" type="checkbox" value=>wifiあり</li>
+                        </ul>
+                    </div>
                     <button id="submit_button" class="btn btn-info col-xs-offset-4" type="submit" name="検索">
                     <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
                         検索
@@ -70,6 +82,7 @@
                 <script type="text/javascript">
                     $(document).ready(function(){
                         $('#submit_button').click(function(){
+                            // 0で絞り込みなし、1で絞り込みあり
                             if($('.lunch').prop('checked')){
                                 $('.lunch').val("1");
                             }else{
