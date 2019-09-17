@@ -12,8 +12,12 @@
 */
 
 Route::get('/', function () {
-    return redirect('search');
+    return redirect('genre_search');
 });
-Route::get('search', 'ResultsController@search');
+Route::get('genre_search', 'ResultsController@genre_search');
+Route::get('freeword_search', 'ResultsController@freeword_search');
 Route::post('results', 'ResultsController@results');
 Route::get('results', 'ResultsController@results');
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

@@ -1,24 +1,12 @@
-<!DOCTYPE html>
-<head>
-    <meta charset="utf-8">
 
-    
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <!-- bootstrapの読み込み -->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="css/style.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <!-- タイトル -->
-    <title>俺のグルメナビ</title>
-</head>
+
+@extends('layouts.app')
+
+@section('content')
 <body>
-    <nav class="navbar navbar-default">
-        <h2 class="title">俺のグルメナビ</h2>
-    </nav>
-    <div class="col-md-offset-1">
-        <div class="col-md-offset-2">
-            <form class="col-md-offset-1 " method="post" action="{{url('results')}}">
+    <div id="search-block">
+        <div class="">
+            <form class="col-md-offset-3" method="post" action="{{url('results')}}">
                     {{csrf_field()}}
                     @csrf
                     <br>
@@ -55,9 +43,6 @@
                         </select>
                     </p>
                     <br>
-                    
-                     フリーワード検索：<input class="freeword" type="text">
-                    <br>
                     <br>
                     条件：<br>
                     <div class="condition-box col-md-offset-1">
@@ -71,8 +56,8 @@
                             <li class="condition"><input class="wifi condition" name="wifi" type="checkbox" value=>wifiあり</li>
                         </ul>
                     </div>
-                    <button id="submit_button" class="btn btn-info col-xs-offset-4" type="submit" name="検索">
-                    <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                    <button id="submit_button" class="btn btn-info col-md-offset-4" type="submit" name="検索">
+                    <i class="fas fa-search"></i>
                         検索
                     </button>
                 </form>
@@ -121,6 +106,8 @@
                         });
                     });
                 </script>
-            </div>
         </div>
+    </div>
 </body>
+
+@endsection

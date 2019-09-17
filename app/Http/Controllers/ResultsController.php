@@ -12,9 +12,13 @@ use GuzzleHttp\Client;
 
 class ResultsController extends Controller
 {
-    public function search(){
-        return view('gnavi.search');
+    public function freeword_search(){
+        return view('gnavi.freeword_search');
     }
+
+    public function genre_search(){
+        return view('gnavi.genre_search');
+    } 
 
     public function results(Request $request){
 
@@ -35,27 +39,7 @@ class ResultsController extends Controller
     
 
        
-        $client = new Client();
-        $response = $client->request('GET', 
-        'https://api.gnavi.co.jp/RestSearchAPI/v3/',
-        [
-            'query'=>[
-                'keyid'=>'caca5f46516bd4a45b6243cdf700fb48',
-                'name'=>$request->name,
-                'input_coordinates_mode'=>2,
-                'latitude'=>$location_results["results"][0]["geometry"]["location"]["lat"],
-                'longitude'=>$location_results["results"][0]["geometry"]["location"]["lng"],
-                'range'=>3,
-                'hit_per_page'=>50,
-                'lunch'=>$request->lunch,
-                'no_smoking'=>$request->no_smoking,
-                'bottomless_cup'=>$request->bottomless_cup,
-                'private_room'=>$request->private_room,
-                'e_money'=>$request->e_money,
-                'breakfast'=>$request->breakfast,
-                'wifi'=>$request->wifi
-            ]
-        ]);
+    
 
        
        
@@ -78,7 +62,8 @@ class ResultsController extends Controller
                 'private_room'=>$request->private_room,
                 'e_money'=>$request->e_money,
                 'breakfast'=>$request->breakfast,
-                'wifi'=>$request->wifi
+                'wifi'=>$request->wifi,
+                'freeword'=>$request->freeword
             ]
         ]);
         

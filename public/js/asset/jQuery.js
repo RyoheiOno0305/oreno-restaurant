@@ -1,6 +1,47 @@
-$(function () {
-    alert("a");
+$(document).ready(function(){
+
+    $('.slider').slick({
+        autoplay:true,
+        autoplaySpeed:5000,
+        dots:true,
+    });
     
-        
-    
+    $('#submit_button').click(function(){
+        // 0で絞り込みなし、1で絞り込みあり
+        if($('.lunch').prop('checked')){
+            $('.lunch').val("1");
+        }else{
+            $('.lunch').val("0"); 
+        }
+        if($('.no_smoking').prop('checked')){
+            $('.no_smoking').val("1");
+        }else{
+            $('.no_smoking').val("0"); 
+        }
+        if($('.bottomless_cup').prop('checked')){
+            $('.bottomless_cup').val("1");
+        }else{
+            $('.bottomless_cup').val("0"); 
+        }
+        if($('.private_room').prop('checked')){
+            $('.private_room').val("1");
+        }else{
+            $('.private_room').val("0"); 
+        }
+        if($('.e_money').prop('checked')){
+            $('.e_money').val("1");
+        }else{
+            $('.e_money').val("0"); 
+        }
+        if($('.breakfast').prop('checked')){
+            $('.breakfast').val("1");
+        }else{
+            $('.breakfast').val("0"); 
+        }
+        if($('.wifi').prop('checked')){
+            $('.wifi').val("1");
+        }else{
+            $('.wifi').val("0"); 
+        }
+    });
 });

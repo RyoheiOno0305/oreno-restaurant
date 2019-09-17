@@ -4379,9 +4379,10 @@ input[type=button].btn-block {
 .navbar-nav {
   display: flex;
   flex-direction: column;
-  padding-left: 0;
+  padding-left:0;
   margin-bottom: 0;
   list-style: none;
+  width:30%:
 }
 
 .navbar-nav .nav-link {
@@ -4403,7 +4404,7 @@ input[type=button].btn-block {
 .navbar-collapse {
   flex-basis: 100%;
   flex-grow: 1;
-  align-items: center;
+  align-items: right;
 }
 
 .navbar-toggler {

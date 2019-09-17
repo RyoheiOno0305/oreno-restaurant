@@ -24,6 +24,13 @@
     list-style:none;
 }
 
+.fixed_btn{
+  position: fixed;
+  bottom: 10px; 
+  left: 20px;
+  padding: 6px 40px;
+}
+
 .freeword{
     font-size:20px;
     width:400px;
@@ -38,26 +45,32 @@
     font-size:20px;
 }
 
-.title{
-    float:left;
-    padding-left:250px;
-    font-weight:bold;
-}
-
 #top-title{
     font-weight:bold;
 }
 
+#submit_button{
+    margin-left:500px;
+    color:white;
+}
 
 
+#search-block{
+    padding-left:450px;
+}
 
+#search-ways-box{
+    margin-left:100px;
+}
+
+#search-ways-box > a{
+    padding-left:20px;
+}
 
 .select-box{
     border:solid 1px #C0C0C0;
     vertical-align: middle;
 }
-
-
 
 .slider{
     width: 30%;
