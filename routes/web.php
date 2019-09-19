@@ -11,11 +11,14 @@
 |
 */
 
+
+
+
 Route::get('/', function () {
     return redirect('genre_search');
 });
-Route::get('genre_search', 'ResultsController@genre_search');
-Route::get('freeword_search', 'ResultsController@freeword_search');
+Route::get('genre_search', 'SearchController@genre_search');
+Route::get('freeword_search', 'SearchController@freeword_search');
 Route::post('results', 'ResultsController@results');
 Route::get('results', 'ResultsController@results');
 Auth::routes();

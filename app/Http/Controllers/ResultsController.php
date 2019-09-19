@@ -2,23 +2,13 @@
 
 namespace App\Http\Controllers;
 
-
-
 use Illuminate\Http\Request;
 use GuzzleHttp\Client;
 
 
-
-
 class ResultsController extends Controller
 {
-    public function freeword_search(){
-        return view('gnavi.freeword_search');
-    }
-
-    public function genre_search(){
-        return view('gnavi.genre_search');
-    } 
+    
 
     public function results(Request $request){
 
@@ -36,12 +26,6 @@ class ResultsController extends Controller
 
        $location = $geo_response->getBody()->getContents();
        $location_results = json_decode($location, true);
-    
-
-       
-    
-
-       
        
 
         $client = new Client();
