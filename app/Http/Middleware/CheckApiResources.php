@@ -1,0 +1,65 @@
+<?php
+
+namespace App\Http\Middleware;
+
+use Closure;
+
+class CheckApiResources
+{
+    /**
+     * Handle an incoming request.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \Closure  $next
+     * @return mixed
+     */
+    public function handle($request, Closure $next)
+    {
+        $client = new Client();
+       $geo_response = $client->request('GET',
+       'https://maps.googleapis.com/maps/api/geocode/json',
+       [
+           'query'=>[
+               'key'=>'AIzaSyC8JpJJYEFkmppRARm1ApDc72IIfVTS6Rg',
+               'address'=>$request->place
+               
+           ]
+       ]);
+
+       $location = $geo_response->getBody()->getContents();
+       $location_results = json_decode($location, true);
+
+
+        
+       
+        $client = new Client();
+        $response = $client->request('GET', 
+        'https://api.gnavi.co.jp/RestSearchAPI/v3/',
+        [
+            'query'=>[
+                'keyid'=>'caca5f46516bd4a45b6243cdf700fb48',
+                'name'=>$request->name,
+                'input_coordinates_mode'=>2,
+                'latitude'=>$location_results["results"][0]["geometry"]["location"]["lat"],
+                'longitude'=>$location_results["results"][0]["geometry"]["location"]["lng"],
+                'range'=>3,
+                'hit_per_page'=>50,
+                'lunch'=>$request->lunch,
+                'no_smoking'=>$request->no_smoking,
+                'bottomless_cup'=>$request->bottomless_cup,
+                'private_room'=>$request->private_room,
+                'e_money'=>$request->e_money,
+                'breakfast'=>$request->breakfast,
+                'wifi'=>$request->wifi,
+                'freeword'=>$request->freeword
+            ]
+        ]);
+
+        $json = $response->getBody()->getContents();
+
+        if($json == null){
+            return redirect('/');
+        }
+        return $next($request);
+    }
+}

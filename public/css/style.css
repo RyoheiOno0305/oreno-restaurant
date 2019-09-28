@@ -1,15 +1,12 @@
 
 
-/* * {
-    margin: 0;
-    padding: 0;
-    font-family: "Noto Sans JP";
-    box-sizing: border-box;
-    font-weight: normal;
-} */
 
 .address{
     font-size:20px;
+}
+
+.back_btn{
+    margin-left:900px;
 }
 
 .condition{
@@ -24,9 +21,15 @@
     list-style:none;
 }
 
+.error-message{
+    font-size:30px;
+    margin-top:300px;
+    margin-left:400px;
+}
+
 .fixed_btn{
   position: fixed;
-  bottom: 10px; 
+  bottom: 30px; 
   left: 20px;
   padding: 6px 40px;
 }

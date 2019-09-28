@@ -4,12 +4,16 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use GuzzleHttp\Client;
+use GuzzleHttp\Psr7;
+use GuzzleHttp\Exception\RequestException;
+use GuzzleHttp\Exception\ClientException;
 
 
 class ResultsController extends Controller
 {
-    
 
+    
+    
     public function results(Request $request){
 
 
@@ -26,41 +30,48 @@ class ResultsController extends Controller
 
        $location = $geo_response->getBody()->getContents();
        $location_results = json_decode($location, true);
-       
 
+
+        
+       
         $client = new Client();
         $response = $client->request('GET', 
         'https://api.gnavi.co.jp/RestSearchAPI/v3/',
-        [
-            'query'=>[
-                'keyid'=>'caca5f46516bd4a45b6243cdf700fb48',
-                'name'=>$request->name,
-                'input_coordinates_mode'=>2,
-                'latitude'=>$location_results["results"][0]["geometry"]["location"]["lat"],
-                'longitude'=>$location_results["results"][0]["geometry"]["location"]["lng"],
-                'range'=>3,
-                'hit_per_page'=>50,
-                'lunch'=>$request->lunch,
-                'no_smoking'=>$request->no_smoking,
-                'bottomless_cup'=>$request->bottomless_cup,
-                'private_room'=>$request->private_room,
-                'e_money'=>$request->e_money,
-                'breakfast'=>$request->breakfast,
-                'wifi'=>$request->wifi,
-                'freeword'=>$request->freeword
-            ]
-        ]);
-        
-        
-
-        
-        $json = $response->getBody()->getContents();
-        $results = json_decode($json, true);
-        
-        return view('gnavi.result')->with('results', $results);
-        
+        array(
+            
+            "query"=>[
+                    'keyid'=>'caca5f46516bd4a45b6243cdf700fb48',
+                    'name'=>$request->name,
+                    'input_coordinates_mode'=>2,
+                    'latitude'=>$location_results["results"][0]["geometry"]["location"]["lat"],
+                    'longitude'=>$location_results["results"][0]["geometry"]["location"]["lng"],
+                    'range'=>3,
+                    'hit_per_page'=>50,
+                    'lunch'=>$request->lunch,
+                    'no_smoking'=>$request->no_smoking,
+                    'bottomless_cup'=>$request->bottomless_cup,
+                    'private_room'=>$request->private_room,
+                    'e_money'=>$request->e_money,
+                    'breakfast'=>$request->breakfast,
+                    'wifi'=>$request->wifi,
+                    'freeword'=>$request->freeword
+            ],
+            "http_errors" => false,
+        )
+        );
 
 
+        if($response->getStatusCode() == 404){
+            return view('errors.404_custom');
+        }else{
+            $json = $response->getBody()->getContents();
+            $results = json_decode($json, true);
+            return view('gnavi.result')->with('results', $results);
+        }
+
+        
+            
+        
         
         
     }
