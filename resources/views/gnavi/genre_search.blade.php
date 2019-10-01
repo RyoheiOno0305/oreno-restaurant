@@ -11,7 +11,7 @@
                     @csrf
                     <br>
                     <br>
-                    <p>今どこ？：
+                    <p class="where">今どこ？：
                     <!-- 場所は駅で指定　例 新宿＝新宿駅 -->
                         <select name="place" class="select-box">
                             <option value="新宿駅">新宿</option>
@@ -22,8 +22,9 @@
                             <option value="秋葉原駅">秋葉原</option>
                             <option value="有楽町駅">有楽町</option>
                         </select>
+                    </p>
                     　　　　
-                       何食べる？：
+                    <p class="what">何食べる？：
                         <select name="name" class="select-box">
                             <option value="ステーキ">ステーキ</option>
                             <option value="パスタ">パスタ</option>
@@ -41,7 +42,7 @@
                             <option value="焼肉">焼肉</option>
                             <option value="ジンギスカン">ジンギスカン</option>
                         </select>
-                    </p>
+                    <p>
                     <br>
                     <br>
                     条件：<br>

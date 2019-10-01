@@ -14,7 +14,6 @@ class SearchController extends Controller
     }
 
     public function freeword_search(){
-
         return view('gnavi.freeword_search');
     }
 

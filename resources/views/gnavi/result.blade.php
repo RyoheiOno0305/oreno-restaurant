@@ -26,7 +26,7 @@
     <body>
         
         
-        <a class="fixed_btn btn btn-success" href="{{ url('genre_search') }}">検索に戻る</a>
+        
             @foreach($results["rest"] as $result)
             <br>
             <br>
@@ -44,15 +44,17 @@
                             @endif
                         </ul>
                         <div class="introduction　col-md-offset-2 col-md-8">
-                            <br>
                             <p class="info">{{$result['pr']['pr_long']}}</p>
                             <p class="tel">電話番号：{{$result['tel']}}</p>
                             <p class="address">住所：{{$result['address']}}</p>
+                            <br>
+                            <a class="coupon" href="{{$result['coupon_url']['pc']}}">クーポンpc</a>
+                            <a class="coupon" href="{{$result['coupon_url']['mobile']}}">クーポンmobile</a>
                         </div>
                     </div>
                 </div>
             @endforeach
-        
+            <a class="fixed_btn btn btn-success" href="{{ url('genre_search') }}">検索に戻る</a>
 
         
         

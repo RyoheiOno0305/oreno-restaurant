@@ -51,8 +51,8 @@
                 </button>
 
                 <div id="search-ways-box">
-                    <a href="{{url('freeword_search')}}">フリーワード検索</a>
-                    <a href="{{url('genre_search')}}">ジャンル検索</a>
+                    <a class="search" href="{{url('freeword_search')}}">フリーワード検索</a>
+                    <a class="search" href="{{url('genre_search')}}">ジャンル検索</a>
                 </div>
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">

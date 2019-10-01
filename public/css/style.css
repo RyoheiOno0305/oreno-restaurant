@@ -1,6 +1,50 @@
 
+@media screen and (max-width:639px) {
+/*スマホ用*/
+.coupon{
+    margin-left:20px;
+}
+
+.fixed_btn{
+    width:100%;
+    position:fixed;
+}
+
+.search{
+    padding:10px;
+}
+
+#search-block{
+    margin-left:70px;
+}
+
+.where .what{
+    width:auto;
+}
+
+.what{
+    margin-top:20px;
+}
+
+#submit_button{
+    margin-left:110px;
+    color:white;
+}
 
 
+
+.result-table{
+    border-top:double 4px #C0C0C0;
+    display:relative;
+}
+}
+       
+@media only screen and (min-width:640px) and (max-width:1023px) {
+/*tablet用*/
+}
+    
+@media screen and (min-width:1024px) {
+/*pc用*/
 .address{
     font-size:20px;
 }
@@ -19,6 +63,10 @@
 
 .condition-box > ul{
     list-style:none;
+}
+
+.coupon{
+    margin-left:20px;
 }
 
 .error-message{
@@ -110,3 +158,16 @@
     border-top:double 4px #C0C0C0;
     display:relative;
 }
+
+.what{
+    margin-left:30px;
+    display:inline-block;
+}
+
+.where{
+    display:inline-block;
+}
+
+}
+
+
